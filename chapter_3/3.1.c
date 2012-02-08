@@ -2,35 +2,24 @@
  the price of more tests outside.) Write a version with only one test inside the loop and
  measure the difference in run-time.
  */
-#include<stdio.h>
-#include<string.h>
-#define MAX 100
-int binsearch(int x, int v[],int n);
-main()
-{
-	int x,n,r;
-	int v[MAX]={0};
-	printf("enter int array v[], comparing value x \n ");
-	scanf("%s  %d",v,&x);
-	n=strlen(v);
-	r=binsearch(x,v,n);
-	printf("the index of match is %d\n",r);
-}
+#include<stdio.
 
 
 int binsearch(int x, int v[],int n)
 {
-	int i=0,c=0;
-	while (i<n) {
-		if(x==v[i]){
-			c=1;
-			break;
-		}
-		
-	 }
-	if(c)
-		return i;
-	if(!c)
-		return -1;   
+	int low , high , mid ;
+	low = 0 ;
+	high = n - 1;
+	mid = ( low + high ) / 2 ;
+        while( low <= high && x != v[mid]){
+        	if ( x < v[mid])
+        		high = mid -1 ;
+        	else
+        		low = mid + 1 ;
+        	mid = ( low + high ) / 2 ;
+        }
+        if ( x == v[mid])
+		return mid  ;
+	else
+		return -1 ;
 }
-
